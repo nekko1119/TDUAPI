@@ -2,22 +2,24 @@ apply plugin: 'java'
 apply plugin: 'jetty'
 
 tasks.withType(JavaCompile) {
-	options.encoding = 'UTF-8'
+    options.encoding = 'UTF-8'
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	compile 'org.glassfish.jersey.core:jersey-server:2.13'
-	compile 'org.glassfish.jersey.containers:jersey-container-servlet:2.13'
-	testCompile 'junit:junit:4.11'
+    compile 'org.glassfish.jersey.core:jersey-server:2.13'
+    compile 'org.glassfish.jersey.containers:jersey-container-servlet:2.13'
+    compile 'org.glassfish.jersey.media:jersey-media-json-jackson:2.13'
+    compile 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.4.0'
+    testCompile 'junit:junit:4.11'
 }
 
 jettyRun {
-	httpPort = 9000
-	contextPath = "api"
-	reload = "automatic"
-	scanIntervalSeconds = 1
+    httpPort = 9000
+    contextPath = ""
+    reload = "automatic"
+    scanIntervalSeconds = 1
 }
